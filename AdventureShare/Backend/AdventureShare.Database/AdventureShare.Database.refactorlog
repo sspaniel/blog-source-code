@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="c680b37d-95e2-4c5c-a79b-a1e460066106" ChangeDateTime="05/27/2022 12:57:35">
+    <Property Name="ElementName" Value="[dbo].[User].[F]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[User]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="FirstName" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="50ca31fb-821b-48b2-ae56-bb6c0d8878a6" ChangeDateTime="05/27/2022 12:58:03">
+    <Property Name="ElementName" Value="[dbo].[User].[LastUpdatedUtc]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[User]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="LastUpdateUtc" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="7d557c67-29c5-4639-86ff-bcf59f2fa623" ChangeDateTime="05/27/2022 13:14:16">
+    <Property Name="ElementName" Value="[dbo].[UserPermission].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[UserPermission]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="UserId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="0bb8edd1-995d-43a4-b301-bf16ae0e52b8" ChangeDateTime="05/27/2022 14:13:07">
+    <Property Name="ElementName" Value="[dbo].[User].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[User]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="UserId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="d19b0aee-71df-4ffc-bdd9-ece2cc7aed7c" ChangeDateTime="05/27/2022 14:13:13">
+    <Property Name="ElementName" Value="[dbo].[Permission].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Permission]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PermissionId" />
+  </Operation>
+</Operations>
