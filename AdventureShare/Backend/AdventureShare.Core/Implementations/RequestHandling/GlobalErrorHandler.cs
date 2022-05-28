@@ -18,7 +18,7 @@ namespace AdventureShare.Core.Implementations.RequestHandling
             _logger = loggerFactory.CreateLogger("Adventure Share");
         }
 
-        public void UserLoginFailed(string message, Exception error, CreateUserToken request)
+        public void CreateUserTokenFailed(string message, Exception error, CreateUserToken request)
         {
             try
             {

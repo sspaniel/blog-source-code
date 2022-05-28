@@ -68,7 +68,7 @@ namespace AdventureShare.Core.Implementations.RequestHandling
             }
             catch (Exception error)
             {
-                _errorHandler.UserLoginFailed("user login failed", error, request);
+                _errorHandler.CreateUserTokenFailed("create user token failed", error, request);
                 var internalError = ResponseFormatter.InternalError<UserToken>();
                 return internalError;
             }

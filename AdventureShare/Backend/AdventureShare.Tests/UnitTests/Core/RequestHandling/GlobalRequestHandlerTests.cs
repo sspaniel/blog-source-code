@@ -151,8 +151,8 @@ namespace AdventureShare.Tests.UnitTests.Core.RequestHandling
             var response = await requestHandler.CreateUserTokenAsync(request);
 
             // assert
-            mockErrorHandler.Verify(x => x.UserLoginFailed(
-                    It.Is<string>(actual => actual == "user password update failed"),
+            mockErrorHandler.Verify(x => x.CreateUserTokenFailed(
+                    It.Is<string>(actual => actual == "create user token failed"),
                     It.Is<Exception>(actual => actual == expectedException),
                     It.Is<CreateUserToken>(actual => actual == request)),
                 Times.Once);

@@ -5,7 +5,7 @@ namespace AdventureShare.Core.Abstractions.RequestHandling
 {
     public interface IErrorHandler
     {
-        void UserLoginFailed(string message, Exception error, CreateUserToken request);
+        void CreateUserTokenFailed(string message, Exception error, CreateUserToken request);
         void UpdateUserPasswordFailed(string message, Exception error, UpdateUserPassword request);
     }
 }
