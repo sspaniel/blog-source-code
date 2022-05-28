@@ -1,6 +1,7 @@
 using AdventureShare.Core.Abstractions.RequestHandling;
 using AdventureShare.Core.Abstractions.Services;
-using AdventureShare.Core.Implementations;
+using AdventureShare.Core.Implementations.RequestHandling;
+using AdventureShare.Core.Implementations.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;

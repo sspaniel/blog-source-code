@@ -3,7 +3,7 @@ using AdventureShare.Core.Models.Contracts;
 using AdventureShare.Core.Models.Internal;
 using System.Collections.Generic;
 
-namespace AdventureShare.Core.Implementations
+namespace AdventureShare.Core.Implementations.RequestHandling
 {
     public class GlobalValidator : IValidator
     {

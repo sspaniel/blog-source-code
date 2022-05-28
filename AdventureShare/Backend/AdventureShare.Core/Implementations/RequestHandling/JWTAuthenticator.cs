@@ -8,7 +8,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace AdventureShare.Core.Implementations
+namespace AdventureShare.Core.Implementations.RequestHandling
 {
     public class JWTAuthenticator : IAuthenticator
     {

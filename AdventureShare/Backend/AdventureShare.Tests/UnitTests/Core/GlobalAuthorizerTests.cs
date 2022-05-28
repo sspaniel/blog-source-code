@@ -1,4 +1,4 @@
-﻿using AdventureShare.Core.Implementations;
+﻿using AdventureShare.Core.Implementations.RequestHandling;
 using AdventureShare.Core.Models.Contracts;
 using AdventureShare.Tests.Autofixture;
 using NUnit.Framework;

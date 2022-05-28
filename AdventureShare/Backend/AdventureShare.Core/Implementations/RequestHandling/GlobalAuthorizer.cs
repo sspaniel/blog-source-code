@@ -2,7 +2,7 @@
 using AdventureShare.Core.Models.Contracts;
 using System.Security.Claims;
 
-namespace AdventureShare.Core.Implementations
+namespace AdventureShare.Core.Implementations.RequestHandling
 {
     public class GlobalAuthorizer : IAuthorizer
     {

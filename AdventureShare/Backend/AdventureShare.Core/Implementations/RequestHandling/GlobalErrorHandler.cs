@@ -5,7 +5,7 @@ using AdventureShare.Core.Models.Internal;
 using Microsoft.Extensions.Logging;
 using System;
 
-namespace AdventureShare.Core.Implementations
+namespace AdventureShare.Core.Implementations.RequestHandling
 {
     public class GlobalErrorHandler : IErrorHandler
     {

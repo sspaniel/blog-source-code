@@ -1,7 +1,7 @@
 ﻿using AdventureShare.Core.Abstractions.RequestHandling;
 using AdventureShare.Core.Abstractions.Services;
 using AdventureShare.Core.Helpers;
-using AdventureShare.Core.Implementations;
+using AdventureShare.Core.Implementations.RequestHandling;
 using AdventureShare.Core.Models;
 using AdventureShare.Core.Models.Contracts;
 using AdventureShare.Core.Models.Entities;
