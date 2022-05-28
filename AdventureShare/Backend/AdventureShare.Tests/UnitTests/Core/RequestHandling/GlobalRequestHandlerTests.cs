@@ -2,7 +2,6 @@
 using AdventureShare.Core.Abstractions.Services;
 using AdventureShare.Core.Helpers;
 using AdventureShare.Core.Implementations.RequestHandling;
-using AdventureShare.Core.Models;
 using AdventureShare.Core.Models.Contracts;
 using AdventureShare.Core.Models.Entities;
 using AdventureShare.Core.Models.Internal;
@@ -138,17 +137,26 @@ namespace AdventureShare.Tests.UnitTests.Core.RequestHandling
         [Test, UseFakeDependencies]
         public async Task LoginUserAsync_UnexpectedError_ReturnsInternalError(
             [Frozen] Mock<IValidator> mockValidator,
+            [Frozen] Mock<IErrorHandler> mockErrorHandler,
             CreateUserToken request,
             GlobalRequestHandler requestHandler)
         {
             // arrange
+            var expectedException = new Exception();
+
             mockValidator.Setup(x => x.Validate(It.Is<CreateUserToken>(actual => actual == request)))
-                .Throws(new Exception());
+                .Throws(expectedException);
 
             // act 
             var response = await requestHandler.CreateUserTokenAsync(request);
 
             // assert
+            mockErrorHandler.Verify(x => x.UserLoginFailed(
+                    It.Is<string>(actual => actual == "user password update failed"),
+                    It.Is<Exception>(actual => actual == expectedException),
+                    It.Is<CreateUserToken>(actual => actual == request)),
+                Times.Once);
+
             response.Code.ShouldBe(ResponseCode.InternalError);
             response.ErrorMessages.ShouldContain("internal error, please try again and/or contact support");
             response.Data.ShouldBeNull();
