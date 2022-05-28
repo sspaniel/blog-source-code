@@ -28,6 +28,11 @@ namespace AdventureShare.Tests.UnitTests.Core.RequestHandling
             claimsPrinciple.Claims.ShouldContain(x => x.Type == nameof(userLogin.UserId) && x.Value == userLogin.UserId.ToString());
             claimsPrinciple.Claims.ShouldContain(x => x.Type == nameof(userLogin.Email) && x.Value == userLogin.Email);
             claimsPrinciple.Claims.ShouldContain(x => x.Type == nameof(userLogin.DisplayName) && x.Value == userLogin.DisplayName);
+
+            foreach(var permission in permissions)
+            {
+                claimsPrinciple.Claims.ShouldContain(x => x.Type == "Permissions" && x.Value == permission.Name);
+            }
         }
 
         [Test, UseFakeDependencies]
