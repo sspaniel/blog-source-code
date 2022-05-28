@@ -29,7 +29,7 @@ namespace AdventureShare.Core.Implementations.RequestHandling
         {
             var validationErrors = new List<string>();
 
-            if (request?.UserId == default)
+            if ((request?.UserId ?? 0) == 0)
             {
                 validationErrors.Add($"{nameof(request.UserId)} is required");
             }
