@@ -57,7 +57,7 @@ namespace AdventureShare.Core.Implementations.Services
             new UserPermission
             {
                 UserId = 1,
-                PermissionId = 2
+                PermissionId = 1
             },
             new UserPermission
             {
@@ -67,7 +67,7 @@ namespace AdventureShare.Core.Implementations.Services
             new UserPermission
             {
                 UserId = 1,
-                PermissionId = 2
+                PermissionId = 3
             }
         };
 
