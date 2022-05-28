@@ -4,7 +4,7 @@ using System.Net;
 
 namespace AdventureShare.WebAPI.Helpers
 {
-    public static class ResponseHelper
+    public static class ResponseFormatter
     {
         public static IActionResult ToActionResult<TResponse>(this Response<TResponse> response)
         {

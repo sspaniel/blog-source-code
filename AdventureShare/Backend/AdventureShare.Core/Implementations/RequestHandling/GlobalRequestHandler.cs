@@ -37,7 +37,7 @@ namespace AdventureShare.Core.Implementations.RequestHandling
 
                 if (!validationResult.IsValid)
                 {
-                    var validationFailed = ResponseHelper.ValidationFailed<UserToken>(validationResult.Errors);
+                    var validationFailed = ResponseFormatter.ValidationFailed<UserToken>(validationResult.Errors);
                     return validationFailed;
                 }
 
@@ -45,7 +45,7 @@ namespace AdventureShare.Core.Implementations.RequestHandling
 
                 if (userLogin is null)
                 {
-                    var authenticationFailed = ResponseHelper.AuthenticationFailed<UserToken>("email or password is incorrect");
+                    var authenticationFailed = ResponseFormatter.AuthenticationFailed<UserToken>("email or password is incorrect");
                     return authenticationFailed;
                 }
 
@@ -53,7 +53,7 @@ namespace AdventureShare.Core.Implementations.RequestHandling
 
                 if (passwordHash != userLogin.PasswordHash)
                 {
-                    var authenticationFailed = ResponseHelper.AuthenticationFailed<UserToken>("email or password is incorrect");
+                    var authenticationFailed = ResponseFormatter.AuthenticationFailed<UserToken>("email or password is incorrect");
                     return authenticationFailed;
                 }
 
@@ -63,13 +63,13 @@ namespace AdventureShare.Core.Implementations.RequestHandling
                 userLogin.LastLoginUtc = DateTime.UtcNow;
                 await _repository.UpdateUserLoginAsync(userLogin);
 
-                var success = ResponseHelper.Success(userToken);
+                var success = ResponseFormatter.Success(userToken);
                 return success;
             }
             catch (Exception error)
             {
                 _errorHandler.UserLoginFailed("user login failed", error, request);
-                var internalError = ResponseHelper.InternalError<UserToken>();
+                var internalError = ResponseFormatter.InternalError<UserToken>();
                 return internalError;
             }
         }
@@ -82,7 +82,7 @@ namespace AdventureShare.Core.Implementations.RequestHandling
 
                 if (actor is null)
                 {
-                    var authenticationFailed = ResponseHelper.AuthenticationFailed<string>("authentication failed");
+                    var authenticationFailed = ResponseFormatter.AuthenticationFailed<string>("authentication failed");
                     return authenticationFailed;
                 }
 
@@ -90,7 +90,7 @@ namespace AdventureShare.Core.Implementations.RequestHandling
 
                 if (!validationResult.IsValid)
                 {
-                    var validationFailed = ResponseHelper.ValidationFailed<string>(validationResult.Errors);
+                    var validationFailed = ResponseFormatter.ValidationFailed<string>(validationResult.Errors);
                     return validationFailed;
                 }
 
@@ -98,7 +98,7 @@ namespace AdventureShare.Core.Implementations.RequestHandling
 
                 if (!isAuthorized)
                 {
-                    var authorizationFailed = ResponseHelper.AuthorizationFailed<string>();
+                    var authorizationFailed = ResponseFormatter.AuthorizationFailed<string>();
                     return authorizationFailed;
                 }
 
@@ -107,13 +107,13 @@ namespace AdventureShare.Core.Implementations.RequestHandling
 
                 await _repository.UpdateUserLoginAsync(userLogin);
 
-                var success = ResponseHelper.Success("password updated");
+                var success = ResponseFormatter.Success("password updated");
                 return success;
             }
             catch (Exception error)
             {
                 _errorHandler.UpdateUserPasswordFailed("user password update failed", error, request);
-                var internalError = ResponseHelper.InternalError<string>();
+                var internalError = ResponseFormatter.InternalError<string>();
                 return internalError;
             }
         }

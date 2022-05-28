@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace AdventureShare.Core.Helpers
 {
-    public static class ResponseHelper
+    public static class ResponseFormatter
     {
         public static Response<TData> Success<TData>(TData data)
         {
