@@ -16,19 +16,19 @@ namespace AdventureShare.Core.Implementations.RequestHandling
         private const string AUDIENCE = "Adventure Share API";
 
         private readonly byte[] _signatureKey;
-        private readonly int _expirationDurationInHours;
+        private readonly TimeSpan _expirationDuration;
 
         public JWTAuthenticator(
             string signatureKey,
-            int expirationDurationInHours)
+            TimeSpan expirationDuration)
         {
             _signatureKey = Encoding.UTF8.GetBytes(signatureKey);
-            _expirationDurationInHours = expirationDurationInHours;
+            _expirationDuration = expirationDuration;
         }
 
         public UserToken CreateUserToken(UserLogin userLogin, IEnumerable<Permission> permissions)
         {
-            var expires = DateTime.UtcNow.AddHours(_expirationDurationInHours);
+            var expires = DateTime.UtcNow.AddSeconds(_expirationDuration.TotalSeconds);
 
             var claims = new List<Claim>
             {

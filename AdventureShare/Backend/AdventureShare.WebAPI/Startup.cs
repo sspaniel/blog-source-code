@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using System;
 using System.Collections.Generic;
 
 namespace AdventureShare.WebAPI
@@ -72,7 +73,7 @@ namespace AdventureShare.WebAPI
             });
 
             services
-                .AddTransient<IAuthenticator>(sp => new JWTAuthenticator("^FAZw2w$GJE+nS&-&u4hh-geAEzxK77#", 24))
+                .AddTransient<IAuthenticator>(sp => new JWTAuthenticator("^FAZw2w$GJE+nS&-&u4hh-geAEzxK77#", TimeSpan.FromHours(24)))
                 .AddTransient<IValidator, GlobalValidator>()
                 .AddTransient<IAuthorizer, GlobalAuthorizer>()
                 .AddTransient<IErrorHandler, GlobalErrorHandler>()
