@@ -42,7 +42,7 @@ namespace AdventureShare.Core.Helpers
         {
             var response = new Response<TData>
             {
-                Code = ResponseCode.AuthenticationFailed,
+                Code = ResponseCode.AuthorizationFailed,
                 ErrorMessages = new string[] { "user does not have permission" },
             };
 
