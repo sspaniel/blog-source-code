@@ -26,7 +26,9 @@ namespace AdventureShare.WebAPI.Helpers
 
             var userToken = new UserToken
             {
-                TokenValue = authorizationHeaderValue.Replace("bearer", string.Empty, StringComparison.CurrentCultureIgnoreCase)
+                TokenValue = authorizationHeaderValue
+                    .Replace("bearer", string.Empty, StringComparison.CurrentCultureIgnoreCase)
+                    .Replace(" ", string.Empty)
             };
 
             return userToken;

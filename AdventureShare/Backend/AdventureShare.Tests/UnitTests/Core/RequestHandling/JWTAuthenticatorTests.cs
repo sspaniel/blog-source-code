@@ -16,10 +16,10 @@ namespace AdventureShare.Tests.UnitTests.Core.RequestHandling
             JWTAuthenticator authenticator)
         {
             // arrange
-            var securityToken = authenticator.CreateUserToken(userLogin, permissions);
+            var userToken = authenticator.CreateUserToken(userLogin, permissions);
 
             // act
-            var claimsPrinciple = authenticator.Authenticate(securityToken);
+            var claimsPrinciple = authenticator.Authenticate(userToken);
 
             // assert
             claimsPrinciple.Claims.ShouldContain(x => x.Type == "iss" && x.Value == "Adventure Share");
