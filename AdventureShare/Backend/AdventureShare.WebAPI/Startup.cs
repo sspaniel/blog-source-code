@@ -72,13 +72,15 @@ namespace AdventureShare.WebAPI
             });
 
             services
-                .AddHttpContextAccessor()
-                .AddTransient<IValidator, GlobalValidator>()
-                .AddSingleton<IRepository, InMemoryRepository>()
-                .AddTransient<IErrorHandler, GlobalErrorHandler>()
                 .AddTransient<IAuthenticator>(sp => new JWTAuthenticator("^FAZw2w$GJE+nS&-&u4hh-geAEzxK77#", 24))
+                .AddTransient<IValidator, GlobalValidator>()
                 .AddTransient<IAuthorizer, GlobalAuthorizer>()
-                .AddTransient<IRequestHandler, GlobalRequestHandler>();
+                .AddTransient<IErrorHandler, GlobalErrorHandler>()
+                .AddTransient<IRequestHandler, GlobalRequestHandler>()
+                .AddHttpContextAccessor()
+                .AddSingleton<IRepository, InMemoryRepository>()
+                .AddTransient<IMessageService, NullMessageService>()
+                .AddLogging();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

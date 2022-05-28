@@ -12,10 +12,10 @@ namespace AdventureShare.Core.Implementations.RequestHandling
         private readonly IMessageService _messageService;
         private readonly ILogger _logger;
 
-        public GlobalErrorHandler(IMessageService messageService, ILogger logger)
+        public GlobalErrorHandler(IMessageService messageService, ILoggerFactory loggerFactory)
         {
             _messageService = messageService;
-            _logger = logger;
+            _logger = loggerFactory.CreateLogger("Adventure Share");
         }
 
         public void UserLoginFailed(string message, Exception error, CreateUserToken request)

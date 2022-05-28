@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace AdventureShare.Core.Models.Contracts
@@ -11,6 +12,7 @@ namespace AdventureShare.Core.Models.Contracts
         }
 
         public ResponseCode Code { get; set; }
+        public string Description => Code.ToString();
         public IEnumerable<string> ErrorMessages { get; set; }
         public TData Data { get; set; }
     }
