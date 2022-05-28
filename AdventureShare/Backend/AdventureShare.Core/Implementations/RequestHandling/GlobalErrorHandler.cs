@@ -30,6 +30,7 @@ namespace AdventureShare.Core.Implementations.RequestHandling
                     Data = request
                 };
 
+                _logger.LogError(error, message, request);
                 _messageService.PublishFailure(failure);
             }
             catch (Exception unhandledException)
@@ -50,6 +51,7 @@ namespace AdventureShare.Core.Implementations.RequestHandling
                     Data = request
                 };
 
+                _logger.LogError(error, message, request);
                 _messageService.PublishFailure(failure);
             }
             catch (Exception unhandledException)
