@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace AdventureShare.Core.Abstractions
+namespace AdventureShare.Core.Abstractions.Services
 {
     public interface IRepository
     {

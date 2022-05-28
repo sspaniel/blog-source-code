@@ -1,4 +1,4 @@
-﻿using AdventureShare.Core.Abstractions;
+﻿using AdventureShare.Core.Abstractions.RequestHandling;
 using AdventureShare.Core.Models.Contracts;
 using System.Security.Claims;
 

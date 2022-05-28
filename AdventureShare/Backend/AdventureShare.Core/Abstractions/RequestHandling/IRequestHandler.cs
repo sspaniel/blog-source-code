@@ -1,7 +1,7 @@
 ﻿using AdventureShare.Core.Models.Contracts;
 using System.Threading.Tasks;
 
-namespace AdventureShare.Core.Abstractions
+namespace AdventureShare.Core.Abstractions.RequestHandling
 {
     public interface IRequestHandler
     {

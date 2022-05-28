@@ -1,4 +1,4 @@
-﻿using AdventureShare.Core.Abstractions;
+﻿using AdventureShare.Core.Abstractions.RequestHandling;
 using AdventureShare.Core.Models.Contracts;
 using AdventureShare.Core.Models.Entities;
 using Microsoft.IdentityModel.Tokens;

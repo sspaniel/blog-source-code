@@ -1,7 +1,7 @@
 ﻿using AdventureShare.Core.Models.Contracts;
 using System.Security.Claims;
 
-namespace AdventureShare.Core.Abstractions
+namespace AdventureShare.Core.Abstractions.RequestHandling
 {
     public interface IAuthorizer
     {

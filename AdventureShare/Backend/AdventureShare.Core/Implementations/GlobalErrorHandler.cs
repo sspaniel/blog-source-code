@@ -1,19 +1,61 @@
-﻿using AdventureShare.Core.Abstractions;
+﻿using AdventureShare.Core.Abstractions.RequestHandling;
+using AdventureShare.Core.Abstractions.Services;
 using AdventureShare.Core.Models.Contracts;
+using AdventureShare.Core.Models.Internal;
+using Microsoft.Extensions.Logging;
 using System;
 
 namespace AdventureShare.Core.Implementations
 {
-    public class GlobalErrorHandler: IErrorHandler
+    public class GlobalErrorHandler : IErrorHandler
     {
+        private readonly IMessageService _messageService;
+        private readonly ILogger _logger;
+
+        public GlobalErrorHandler(IMessageService messageService, ILogger logger)
+        {
+            _messageService = messageService;
+            _logger = logger;
+        }
+
         public void UserLoginFailed(string message, Exception error, CreateUserToken request)
         {
-            // TODO: implement
+            try
+            {
+                var failure = new Failure
+                {
+                    Source = "Adventure Share",
+                    Message = message,
+                    Error = error,
+                    Data = request
+                };
+
+                _messageService.PublishFailure(failure);
+            }
+            catch (Exception unhandledException)
+            {
+                _logger.LogError(unhandledException, "error handler failed");
+            }
         }
 
         public void UpdateUserPasswordFailed(string message, Exception error, UpdateUserPassword request)
         {
-            // TODO: implement
+            try
+            {
+                var failure = new Failure
+                {
+                    Source = "Adventure Share",
+                    Message = message,
+                    Error = error,
+                    Data = request
+                };
+
+                _messageService.PublishFailure(failure);
+            }
+            catch (Exception unhandledException)
+            {
+                _logger.LogError(unhandledException, "error handler failed");
+            }
         }
     }
 }

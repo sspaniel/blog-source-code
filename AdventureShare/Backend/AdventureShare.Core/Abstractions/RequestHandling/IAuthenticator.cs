@@ -3,7 +3,7 @@ using AdventureShare.Core.Models.Entities;
 using System.Collections.Generic;
 using System.Security.Claims;
 
-namespace AdventureShare.Core.Abstractions
+namespace AdventureShare.Core.Abstractions.RequestHandling
 {
     public interface IAuthenticator
     {

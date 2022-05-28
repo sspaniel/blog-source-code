@@ -1,7 +1,7 @@
 ﻿using AdventureShare.Core.Models.Contracts;
 using AdventureShare.Core.Models.Internal;
 
-namespace AdventureShare.Core.Abstractions
+namespace AdventureShare.Core.Abstractions.RequestHandling
 {
     public interface IValidator
     {

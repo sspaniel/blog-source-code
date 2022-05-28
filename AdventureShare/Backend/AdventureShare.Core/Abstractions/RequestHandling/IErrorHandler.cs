@@ -1,7 +1,7 @@
 ﻿using AdventureShare.Core.Models.Contracts;
 using System;
 
-namespace AdventureShare.Core.Abstractions
+namespace AdventureShare.Core.Abstractions.RequestHandling
 {
     public interface IErrorHandler
     {
