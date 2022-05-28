@@ -1,4 +1,4 @@
-﻿using AdventureShare.Core.Models.Common;
+﻿using AdventureShare.Core.Models.Contracts;
 using System.Collections.Generic;
 
 namespace AdventureShare.Core.Helpers
@@ -21,7 +21,7 @@ namespace AdventureShare.Core.Helpers
             var response = new Response<TData>
             {
                 Code = ResponseCode.AuthenticationFailed,
-                Errors = new string[] { message }
+                ErrorMessages = new string[] { message }
             };
 
             return response;
@@ -32,7 +32,7 @@ namespace AdventureShare.Core.Helpers
             var response = new Response<TData>
             {
                 Code = ResponseCode.ValidationFailed,
-                Errors = validationErrors
+                ErrorMessages = validationErrors
             };
 
             return response;
@@ -43,7 +43,7 @@ namespace AdventureShare.Core.Helpers
             var response = new Response<TData>
             {
                 Code = ResponseCode.AuthenticationFailed,
-                Errors = new string[] { "user does not have permission" },
+                ErrorMessages = new string[] { "user does not have permission" },
             };
 
             return response;
@@ -54,7 +54,7 @@ namespace AdventureShare.Core.Helpers
             var response = new Response<TData>
             {
                 Code = ResponseCode.InternalError,
-                Errors = new string[] { "internal error, please try again and/or contact support" }
+                ErrorMessages = new string[] { "internal error, please try again and/or contact support" }
             };
 
             return response;

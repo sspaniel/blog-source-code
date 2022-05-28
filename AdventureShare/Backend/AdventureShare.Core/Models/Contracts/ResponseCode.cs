@@ -1,4 +1,4 @@
-﻿namespace AdventureShare.Core.Models.Common
+﻿namespace AdventureShare.Core.Models.Contracts
 {
     public enum ResponseCode
     {

@@ -1,10 +1,11 @@
-﻿using AdventureShare.Core.Models.Common;
-using AdventureShare.Core.Models.Contracts;
+﻿using AdventureShare.Core.Models.Contracts;
+using AdventureShare.Core.Models.Internal;
 
 namespace AdventureShare.Core.Abstractions
 {
     public interface IValidator
     {
-        ValidationResult Validate(UserLoginRequest request);
+        ValidationResult Validate(CreateUserToken request);
+        ValidationResult Validate(UpdateUserPassword request);
     }
 }

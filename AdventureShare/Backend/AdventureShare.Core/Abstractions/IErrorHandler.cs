@@ -1,11 +1,11 @@
 ﻿using AdventureShare.Core.Models.Contracts;
 using System;
-using System.Threading.Tasks;
 
 namespace AdventureShare.Core.Abstractions
 {
     public interface IErrorHandler
     {
-        Task UserLoginFailed(Exception error, UserLoginRequest request);
+        void UserLoginFailed(string message, Exception error, CreateUserToken request);
+        void UpdateUserPasswordFailed(string message, Exception error, UpdateUserPassword request);
     }
 }

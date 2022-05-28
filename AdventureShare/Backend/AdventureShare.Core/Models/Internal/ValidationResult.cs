@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace AdventureShare.Core.Models.Common
+namespace AdventureShare.Core.Models.Internal
 {
     public class ValidationResult
     {

@@ -1,10 +1,12 @@
+using AdventureShare.Core.Abstractions;
+using AdventureShare.Core.Implementations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using System;
+using System.Collections.Generic;
 
 namespace AdventureShare.WebAPI
 {
@@ -22,6 +24,13 @@ namespace AdventureShare.WebAPI
         {
             services.AddControllers();
 
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    builder =>
+                        builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+            });
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
@@ -29,7 +38,45 @@ namespace AdventureShare.WebAPI
                     Version = "v1",
                     Title = "Adventure Share API"
                 });
+
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Description = @"JWT Authorization header using the Bearer scheme.
+                        <br> Enter 'Bearer [Security Token]' below
+                        <br> Example: 'Bearer 12345abcdef'",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer"
+                });
+
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement()
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            },
+                            Scheme = "oauth2",
+                            Name = "Bearer",
+                            In = ParameterLocation.Header,
+                        },
+                        new List<string>()
+                    }
+                });
             });
+
+            services
+                .AddHttpContextAccessor()
+                .AddTransient<IValidator, GlobalValidator>()
+                .AddSingleton<IRepository, InMemoryRepository>()
+                .AddTransient<IErrorHandler, GlobalErrorHandler>()
+                .AddTransient<IAuthenticator>(sp => new JWTAuthenticator("^FAZw2w$GJE+nS&-&u4hh-geAEzxK77#", 24))
+                .AddTransient<IAuthorizer, GlobalAuthorizer>()
+                .AddTransient<IRequestHandler, GlobalRequestHandler>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,6 +94,7 @@ namespace AdventureShare.WebAPI
                     options.RoutePrefix = string.Empty;
                 });
             }
+            app.UseCors();
 
             app.UseHttpsRedirection();
 

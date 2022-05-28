@@ -1,12 +1,12 @@
-﻿using AdventureShare.Core.Models.Common;
-using AdventureShare.Core.Models.Contracts;
-using System.IdentityModel.Tokens.Jwt;
+﻿using AdventureShare.Core.Models.Contracts;
 using System.Threading.Tasks;
 
 namespace AdventureShare.Core.Abstractions
 {
     public interface IRequestHandler
     {
-        Task<Response<JwtSecurityToken>> LoginUserAsync(UserLoginRequest request);
+        Task<Response<UserToken>> CreateUserTokenAsync(CreateUserToken request);
+
+        Task<Response<string>> UpdateUserPasswordAsync(UpdateUserPassword request, UserToken userToken);
     }
 }

@@ -1,13 +1,14 @@
-﻿using AdventureShare.Core.Models.Entities;
+﻿using AdventureShare.Core.Models.Contracts;
+using AdventureShare.Core.Models.Entities;
 using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 
 namespace AdventureShare.Core.Abstractions
 {
     public interface IAuthenticator
     {
-        JwtSecurityToken CreateToken(UserLogin userLogin, IEnumerable<Permission> permissions);
+        UserToken CreateUserToken(UserLogin userLogin, IEnumerable<Permission> permissions);
 
-        bool IsAuthenticated(JwtSecurityToken securityToken);
+        ClaimsPrincipal Authenticate(UserToken userToken);
     }
 }
