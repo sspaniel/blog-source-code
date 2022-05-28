@@ -19,7 +19,7 @@ namespace AdventureShare.Tests.UnitTests.Core.RequestHandling
     internal class GlobalRequestHandlerTests
     {
         [Test, UseFakeDependencies]
-        public async Task LoginUserAsync_InvalidRequest_ReturnsValidationFailed(
+        public async Task CreateUserTokenAsync_InvalidRequest_ReturnsValidationFailed(
             [Frozen] Mock<IValidator> mockValidator,
             CreateUserToken request,
             GlobalRequestHandler requestHandler)
@@ -46,7 +46,7 @@ namespace AdventureShare.Tests.UnitTests.Core.RequestHandling
         }
 
         [Test, UseFakeDependencies]
-        public async Task LoginUserAsync_UserNotFound_ReturnsAuthenticationFailed(
+        public async Task CreateUserToken_UserNotFound_ReturnsAuthenticationFailed(
             [Frozen] Mock<IValidator> mockValidator,
             [Frozen] Mock<IRepository> mockRepository,
             CreateUserToken request,
@@ -73,7 +73,7 @@ namespace AdventureShare.Tests.UnitTests.Core.RequestHandling
         }
 
         [Test, UseFakeDependencies]
-        public async Task LoginUserAsync_BadPassword_ReturnsAuthenticationFailed(
+        public async Task CreateUserToken_BadPassword_ReturnsAuthenticationFailed(
             [Frozen] Mock<IValidator> mockValidator,
             [Frozen] Mock<IRepository> mockRepository,
             CreateUserToken request,
@@ -99,7 +99,7 @@ namespace AdventureShare.Tests.UnitTests.Core.RequestHandling
         }
 
         [Test, UseFakeDependencies]
-        public async Task LoginUserAsync_ReturnsSuccess(
+        public async Task CreateUserToken_ReturnsSuccess(
             [Frozen] Mock<IValidator> mockValidator,
             [Frozen] Mock<IRepository> mockRepository,
             [Frozen] Mock<IAuthenticator> mockAuthenticator,
@@ -135,7 +135,7 @@ namespace AdventureShare.Tests.UnitTests.Core.RequestHandling
         }
 
         [Test, UseFakeDependencies]
-        public async Task LoginUserAsync_UnexpectedError_ReturnsInternalError(
+        public async Task CreateUserToken_UnexpectedError_ReturnsInternalError(
             [Frozen] Mock<IValidator> mockValidator,
             [Frozen] Mock<IErrorHandler> mockErrorHandler,
             CreateUserToken request,
