@@ -6,7 +6,7 @@ using Shouldly;
 using System.Collections.Generic;
 using System.Security.Claims;
 
-namespace AdventureShare.Tests.UnitTests.Core
+namespace AdventureShare.Tests.UnitTests.Core.RequestHandling
 {
     internal class GlobalAuthorizerTests
     {

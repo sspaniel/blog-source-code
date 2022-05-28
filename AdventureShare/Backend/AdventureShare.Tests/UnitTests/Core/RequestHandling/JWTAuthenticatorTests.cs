@@ -5,7 +5,7 @@ using NUnit.Framework;
 using Shouldly;
 using System.Collections.Generic;
 
-namespace AdventureShare.Tests.UnitTests.Core
+namespace AdventureShare.Tests.UnitTests.Core.RequestHandling
 {
     public class JWTAuthenticatorTests
     {

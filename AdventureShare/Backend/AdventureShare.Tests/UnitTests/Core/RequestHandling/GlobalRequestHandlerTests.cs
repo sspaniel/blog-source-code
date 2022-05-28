@@ -15,7 +15,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace AdventureShare.Tests.UnitTests.Core
+namespace AdventureShare.Tests.UnitTests.Core.RequestHandling
 {
     internal class GlobalRequestHandlerTests
     {

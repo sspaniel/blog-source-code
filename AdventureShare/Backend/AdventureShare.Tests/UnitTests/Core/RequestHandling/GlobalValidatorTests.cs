@@ -4,7 +4,7 @@ using AdventureShare.Tests.Autofixture;
 using NUnit.Framework;
 using Shouldly;
 
-namespace AdventureShare.Tests.UnitTests.Core
+namespace AdventureShare.Tests.UnitTests.Core.RequestHandling
 {
     internal class GlobalValidatorTests
     {
