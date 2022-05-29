@@ -7,10 +7,10 @@ namespace AdventureShare.Core.Models.Internal
     {
         public ValidationResult()
         {
-            Errors = Enumerable.Empty<string>();
+            Errors = new LinkedList<string>();
         }
 
         public bool IsValid => !Errors.Any();
-        public IEnumerable<string> Errors { get; set; }
+        public ICollection<string> Errors { get; set; }
     }
 }

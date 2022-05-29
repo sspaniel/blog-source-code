@@ -1,7 +1,7 @@
 ﻿using AdventureShare.Core.Abstractions.RequestHandling;
+using AdventureShare.Core.Helpers;
 using AdventureShare.Core.Models.Contracts;
 using AdventureShare.Core.Models.Internal;
-using System.Collections.Generic;
 
 namespace AdventureShare.Core.Implementations.RequestHandling
 {
@@ -9,39 +9,37 @@ namespace AdventureShare.Core.Implementations.RequestHandling
     {
         public ValidationResult Validate(CreateUserToken request)
         {
-            var validationErrors = new List<string>();
+            var result = new ValidationResult();
 
-            if (string.IsNullOrWhiteSpace(request?.Email))
-            {
-                validationErrors.Add($"{nameof(request.Email)} is required");
-            }
+            result
+                .Validate(request?.Email)
+                .If(Is.NullOrWhiteSpace)
+                .AddError($"{nameof(request.Email)} is required");
 
-            if (string.IsNullOrWhiteSpace(request?.Password))
-            {
-                validationErrors.Add($"{nameof(request.Password)} is required");
-            }
+            result
+                .Validate(request?.Password)
+                .If(Is.NullOrWhiteSpace)
+                .AddError($"{nameof(request.Password)} is required");
 
-            var result = new ValidationResult { Errors = validationErrors };
             return result;
         }
 
         public ValidationResult Validate(UpdateUserPassword request)
         {
-            var validationErrors = new List<string>();
+            var result = new ValidationResult();
 
-            if ((request?.UserId ?? 0) == 0)
-            {
-                validationErrors.Add($"{nameof(request.UserId)} is required");
-            }
+            result
+                .Validate(request?.UserId)
+                .If(Is.Default, Is.LessThan0)
+                .AddError($"{nameof(request.UserId)} is required");
 
-            if (string.IsNullOrWhiteSpace(request?.NewPassword))
-            {
-                validationErrors.Add($"{nameof(request.NewPassword)} is required");
-            }
+            result
+                .Validate(request?.NewPassword)
+                .If(Is.NullOrWhiteSpace)
+                .AddError($"{nameof(request.NewPassword)} is required");
 
             // TODO add stronger password rules
 
-            var result = new ValidationResult { Errors = validationErrors };
             return result;
         }
     }
