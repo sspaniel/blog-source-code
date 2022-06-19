@@ -15,7 +15,7 @@ namespace SQLite.Web.API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetUsersAsync()
+        public ActionResult GetUsers()
         {
             var users = _repository.GetUsers();
             return Ok(users);
