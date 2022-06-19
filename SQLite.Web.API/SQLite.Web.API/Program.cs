@@ -11,8 +11,14 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var currentDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-var sqliteDbFilePath = $"{currentDirectory}{builder.Configuration["SQLite-DbFilePath"]}";
+
+var sqliteDbFilePath = builder.Configuration["SQLite-DbFilePath"];
+
+if (builder.Configuration["Environment"] == "local")
+{
+    var currentDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+    sqliteDbFilePath = $"{currentDirectory}{sqliteDbFilePath}";
+}
 
 if (!File.Exists(sqliteDbFilePath))
 {
